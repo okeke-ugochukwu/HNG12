@@ -1,0 +1,16 @@
+{
+   "files.autoSave": "afterDelay",
+   "liveSassCompile.settings.forceBaseDirectory": "/01/assets/style",
+   "liveSassCompile.settings.formats": [
+
+      {
+         "format": "expanded",
+         "extensionName": ".css",
+         "savePath": "/01/css",
+         "savePathReplacementPairs": null
+      }
+   ],
+   "liveSassCompile.settings.includeItems": [
+
+   ]
+}
