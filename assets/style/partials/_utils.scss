@@ -1,0 +1,3 @@
+@function srgba($color, $opacity) {
+   @return rgba($color, $opacity);
+}

@@ -1,0 +1,29 @@
+@import './screens';
+
+.body-text {
+   font-size: clamp(0px, 12.72vw, 32px);
+   font-style: normal;
+   font-weight: 200;
+   line-height: clamp(0px, 14.54vw, 40px); /* 114.286% */
+   
+   @include laps {
+      font-size: 4.5rem;
+      font-style: normal;
+      font-weight: 200;
+      line-height: 5.5rem; /* 120% */
+   }
+}
+
+.fullscreen {
+   width: 100vw;
+   height: 100dvh;
+}
+
+.margin {
+   padding: 9.09vw;
+
+   @include tabs {
+      padding: 40px;
+   }
+}
+

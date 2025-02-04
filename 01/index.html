@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+   <head>
+      <title> HNG12 — Color Game [01]</title>
+
+      <meta charset="UTF-8">
+
+      <link rel="shortcut icon" href="../assets/imgs/favicon.ico" type="image/png">
+      
+      <link rel="stylesheet" href="./css/main.css">
+      <meta name="description" content="Color Game HNG12 - Stage 1">
+      <meta name="keywords" content="resourcekit i38">
+      <meta name="theme-color" content="">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <!--Open Graph data-->
+      <meta property="og:locale" content="en_US"/>
+      <meta property="og:type" content="website"/>
+      <meta property="og:title" content="HNG12 [01] — Color Game"/>
+      <meta property="og:description" content="Color Game HNG12 - Stage 1"/>
+      <meta property="og:url" content=""/>
+      <meta property="og:site_name" content="HNG12 [01] — Color Game">
+      <meta property="og:image" content=""/>
+      <meta property="og:image:width" content="1200"/>
+      <meta property="og:image:height" content="600"/>
+      <meta property="og:image:alt" content="Website Image Snippet"/>
+      <meta name="robots" content="follow, index">
+
+      <!--Twitter Cards-->
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:title" content="HNG12 [01] — Color Game">
+      <meta name="twitter:description" content="Color Game HNG12 - Stage 1">
+      <meta name="twitter:url" content="">
+      <meta name="twitter:image" content="">
+      <meta name="twitter:site" content="@thecavydev">
+      <meta name="twitter:creator" content="@thecavydev">   
+
+   
+     </script>
+   </head>
+
+   <body
+     class="fullscreen"
+     data-testid="colorBox"
+   >     
+      
+     <div class="cg__wrapper fullscreen body-text">
+        <div class="cg margin">
+            <div class="cg__head">
+               <div class="cg__board">
+                  <span>
+                     <span class="cg__status" data-testid="gameStatus">guess the color on the screen</span>: 
+                     <span id="points" data-testid="score">0</span>pt<span id="pointsNumber"></span>
+                  </span>
+               </div>
+
+               <div
+                 class="cg__actionBtns"
+                 data-testid="newGameButton"
+               >
+                  <button
+                    type="button"
+                    role="button"
+                    class="cg__resetBtn"
+                  >
+                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+                        <path d="M60 14V26C60 26.5304 59.7893 27.0391 59.4142 27.4142C59.0391 27.7893 58.5304 28 58 28H46C45.4695 28 44.9608 27.7893 44.5858 27.4142C44.2107 27.0391 44 26.5304 44 26C44 25.4696 44.2107 24.9609 44.5858 24.5858C44.9608 24.2107 45.4695 24 46 24H52.85L46.2025 17.91L46.14 17.85C43.3601 15.0712 39.8232 13.1731 35.9709 12.3929C32.1186 11.6126 28.1217 11.9847 24.4797 13.4628C20.8377 14.9408 17.7119 17.4592 15.4928 20.7034C13.2738 23.9476 12.0598 27.7737 12.0026 31.7039C11.9455 35.634 13.0476 39.4938 15.1713 42.8012C17.295 46.1086 20.3462 48.7169 23.9437 50.3002C27.5412 51.8836 31.5255 52.3718 35.3989 51.704C39.2723 51.0361 42.863 49.2417 45.7225 46.545C46.108 46.1803 46.6227 45.9838 47.1532 45.9985C47.6837 46.0133 48.1866 46.2382 48.5512 46.6237C48.9159 47.0093 49.1125 47.5239 49.0977 48.0544C49.0829 48.5849 48.858 49.0878 48.4725 49.4525C44.0262 53.6693 38.1279 56.0138 32 56H31.67C27.7393 55.9462 23.8821 54.9276 20.4372 53.034C16.9924 51.1403 14.0654 48.4294 11.9136 45.1396C9.76182 41.8499 8.45103 38.0819 8.09648 34.1669C7.74193 30.2519 8.35447 26.3097 9.88025 22.6869C11.406 19.0641 13.7984 15.8715 16.847 13.3897C19.8955 10.908 23.5071 9.21309 27.3641 8.45399C31.2211 7.69488 35.2056 7.89481 38.9673 9.03622C42.7289 10.1776 46.1526 12.2255 48.9375 15L56 21.45V14C56 13.4696 56.2107 12.9609 56.5858 12.5858C56.9608 12.2107 57.4695 12 58 12C58.5304 12 59.0391 12.2107 59.4142 12.5858C59.7893 12.9609 60 13.4696 60 14Z" fill="currentColor">
+                     </svg>
+                  </button>
+
+                  <button
+                    type="button"
+                    role="button"
+                    class="cg__infoBtn"
+                  >
+                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+                        <path d="M32 6C26.8577 6 21.8309 7.52487 17.5552 10.3818C13.2795 13.2387 9.94702 17.2994 7.97914 22.0502C6.01127 26.8011 5.49638 32.0288 6.49959 37.0723C7.50281 42.1159 9.97907 46.7486 13.6152 50.3848C17.2514 54.0209 21.8842 56.4972 26.9277 57.5004C31.9712 58.5036 37.1989 57.9887 41.9498 56.0209C46.7007 54.053 50.7613 50.7205 53.6182 46.4448C56.4751 42.1691 58 37.1423 58 32C57.9927 25.1066 55.2511 18.4976 50.3767 13.6233C45.5024 8.74889 38.8934 6.00728 32 6ZM32 54C27.6488 54 23.3953 52.7097 19.7775 50.2923C16.1596 47.8749 13.3398 44.439 11.6747 40.419C10.0095 36.3991 9.57386 31.9756 10.4227 27.708C11.2716 23.4404 13.3669 19.5204 16.4437 16.4437C19.5204 13.3669 23.4404 11.2716 27.708 10.4227C31.9756 9.57385 36.3991 10.0095 40.419 11.6747C44.439 13.3398 47.875 16.1596 50.2923 19.7775C52.7097 23.3953 54 27.6488 54 32C53.9934 37.8327 51.6734 43.4247 47.5491 47.549C43.4247 51.6734 37.8327 53.9934 32 54ZM36 44C36 44.5304 35.7893 45.0391 35.4142 45.4142C35.0392 45.7893 34.5304 46 34 46C32.9391 46 31.9217 45.5786 31.1716 44.8284C30.4214 44.0783 30 43.0609 30 42V32C29.4696 32 28.9609 31.7893 28.5858 31.4142C28.2107 31.0391 28 30.5304 28 30C28 29.4696 28.2107 28.9609 28.5858 28.5858C28.9609 28.2107 29.4696 28 30 28C31.0609 28 32.0783 28.4214 32.8284 29.1716C33.5786 29.9217 34 30.9391 34 32V42C34.5304 42 35.0392 42.2107 35.4142 42.5858C35.7893 42.9609 36 43.4696 36 44ZM28 21C28 20.4067 28.176 19.8266 28.5056 19.3333C28.8352 18.8399 29.3038 18.4554 29.852 18.2284C30.4001 18.0013 31.0033 17.9419 31.5853 18.0576C32.1672 18.1734 32.7018 18.4591 33.1213 18.8787C33.5409 19.2982 33.8266 19.8328 33.9424 20.4147C34.0581 20.9967 33.9987 21.5999 33.7716 22.1481C33.5446 22.6962 33.1601 23.1648 32.6667 23.4944C32.1734 23.8241 31.5934 24 31 24C30.2044 24 29.4413 23.6839 28.8787 23.1213C28.3161 22.5587 28 21.7956 28 21Z" fill="currentColor"/>
+                     </svg>
+                  </button>
+               </div>
+            </div>
+        </div>
+
+        <div class="cg__colorBtns">
+               <button
+                  data-color=""
+                  data-testid="colorOption"
+                  class="cg__colorBtn body-text"
+               >
+                  1
+               </button>
+
+               <button
+                  data-color=""
+                  data-testid="colorOption"
+                  class="cg__colorBtn body-text"
+               >
+                  2
+               </button>
+
+               <button
+                  data-color=""
+                  data-testid="colorOption"
+                  class="cg__colorBtn body-text"
+               >
+                  3
+               </button>
+
+               <button
+                  data-color=""
+                  data-testid="colorOption"
+                  class="cg__colorBtn body-text"
+               >
+                  4
+               </button>
+
+               <button
+                  data-color=""
+                  data-testid="colorOption"
+                  class="cg__colorBtn body-text"
+               >
+                  5
+               </button>
+
+               <button
+                  data-color=""
+                  data-testid="colorOption"
+                  class="cg__colorBtn body-text"
+               >
+                  6
+               </button>
+            </div>
+
+         <div class="cg__infoModal fullscreen margin">
+            <div
+               class="cg__infoModal__head"
+               data-testid="gameInstructions"
+            >
+               guess the right color and score points. 
+               <br /> 
+               <br /> 
+               5 straight points to win or loose 
+            </div>
+
+            <button
+              class="cg__infoModal__CTA body-text"
+              type="button"
+              role="button"
+            >
+               <span>start game</span>
+            </button>
+        </div>
+     </div>
+      
+      <script type="module" src="./js/script.js"></script>
+   </body>
+
+</html>

@@ -1,0 +1,23 @@
+@mixin flex($align, $justify, $direction) {
+   display: flex;
+
+   @if $align {
+      align-items: $align;
+   }
+
+   @if $justify {
+      justify-content: $justify;
+   }
+
+   @if $direction {
+      flex-direction: $direction;
+   }
+}
+
+@mixin outline {
+   * {
+      outline: 1px solid black;
+   }
+}
+
+$globalTransition: .3s;

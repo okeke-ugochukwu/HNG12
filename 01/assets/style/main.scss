@@ -1,0 +1,202 @@
+@import "./partials/reset";
+@import "./partials/colors";
+@import "./partials/base";
+@import "./partials/mixins";
+@import "./partials/screens";
+@import "./partials/fonts";
+@import "./partials/utils";
+
+* {
+   scroll-behavior: smooth;
+   transition: .3s;
+   font-family: $martian;
+
+   &::-webkit-scrollbar {
+      display: none;
+   }
+
+   -ms-overflow-style: none;
+   scrollbar-width: none;
+}
+
+body {
+   min-width: 100vw;
+   min-height: 100dvh;
+   background: var(--target-color);
+}
+
+.cg {
+   &__wrapper {
+      @include flex(false, space-between, column);
+      gap: 2.5rem;
+   }
+      
+   &__infoModal {
+      background: var(--target-color);
+      position: fixed;
+      inset: 0;
+      display: none;
+      @include flex(fasle, space-between, column);
+      gap: 2.5rem;
+
+      &__head {
+         max-width: 60rem;
+      }
+
+      &__CTA {
+         display: inline;
+         align-self: flex-end;
+         text-align: end;
+         cursor: pointer;
+         text-decoration: underline;
+      }
+
+      &.closed {
+         opacity: 0;
+         z-index: -5;
+      }
+   }
+  
+   // last minute fix
+   &.margin {
+      padding-bottom: 0;
+   }
+
+   &__head {
+      @include flex(false, false, column);
+      gap: clamp(0px, 9.09vw, 1.5rem);
+
+      @include laps {
+         flex-direction: row;
+         justify-content: space-between;
+      }
+   }
+
+   &__board {
+      max-width: 43.5625rem;
+      color: $black64;
+   }
+
+   &__actionBtns {
+
+      button {
+         border-radius: 100%;
+         aspect-ratio: 1 / 1;
+         padding: .5rem;
+         border: 0.125rem solid $black64;
+         color: $black64;
+         cursor: pointer;
+
+         @include laps {
+            border: 0.25rem solid $black64;
+            padding: 1rem;
+         }
+      }
+      
+      svg {
+         width: clamp(0px, 12.72vw, 32px);
+
+         @include laps {
+            width: 5rem;
+         }
+      }
+      
+   }
+
+   &__colorBtns {
+      @include flex(center, flex-end ,row);
+      align-self: flex-end;
+      width: 100%;
+      flex-wrap: wrap;
+      gap: clamp(0px, 9.09vw, 1.5rem);
+      background: $black64;
+      padding: 1rem;
+
+      @include laps {
+         padding: 2.5rem;
+      }
+   }
+
+   &__colorBtn {
+      display: block;
+      width: max-content;
+      @include flex(center, center, false);
+      aspect-ratio: 1 / 1;
+      width: clamp(0rem, 27.27vw, 70px);
+      cursor: pointer;
+      border-radius: 5rem;
+      background: $black64;
+      border: 0.125rem solid $black64;
+      color: white;
+      position: relative;
+
+      &::before {
+         position: absolute;
+         content: '';
+         border-radius: 100%;
+         // opacity: 0;
+         inset: 0;
+         width: 100%;
+         height: 100%;
+         background: var(--bg-color);
+      }
+
+      &.correct {
+         background: var(--bg-color);
+         
+         @include laps {
+            transform: scale(1.12) translateY(-2.5rem) !important;
+
+            &::after {
+               transform: scale(1);
+               bottom: -1.875rem;
+            }
+         };
+
+      }
+
+      &.wrong {
+         
+         animation: 1s shake linear;
+         
+         @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+         }
+      }
+
+      @include laps {
+         width: clamp(0rem, 27.27vw, 7.5rem);
+         
+         &::after {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            content: '';
+            width: 100%;
+            height: 0.5rem;
+            background: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, 0.151) 0%, rgba(0, 0, 0, 0.00) 100%);
+            transform: scale(0);
+            transition: .3s;
+         }
+
+         &:hover {
+            transform: scale(1.12) translateY(-2.5rem);
+
+            &::after {
+               transform: scale(1);
+               bottom: -1.875rem;
+            }
+         }
+
+         &:hover + button {
+            transform: scale(1.05) translateY(-0.9375rem);
+         }
+
+         &:has(+ button:hover) {
+            transform: scale(1.05) translateY(-0.9375rem);
+         }
+      }
+   }
+}
