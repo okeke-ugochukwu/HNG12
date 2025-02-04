@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   guess the right color and score points. 
                   <br /> 
                   <br /> 
-                  5 straight points to win or loose 
+                  ${MAXIMUM_POINTS} straight points to win or loose 
                `,
                game_won: `${MAXIMUM_POINTS} correct guesses. you won!`,
                game_lost: 'you guessed all wrong! game over.'
@@ -129,10 +129,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             cg.game.score.updateDisplay()
             cg.game.genColors()
-         },
-
-         showInfo: () => {
-
          },
 
          genColors: async () => {
@@ -248,6 +244,8 @@ document.addEventListener("DOMContentLoaded", () => {
          cg.infoModal.CTA.el.textContent = cg.infoModal.CTA.text.continue
          cg.infoModal.toggle()
       })
+
+      
 
    // esc key listener
    document.body.addEventListener('keyup', (e) => {
